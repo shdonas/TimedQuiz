@@ -1,0 +1,78 @@
+<!Doctype HTML>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>QUIZ</title>
+	<link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="container">
+		<div id="frame001">
+			<h2> UPenn Bootcamp Text</h2>
+			<div id="countDown">Time Remaining: </div>
+			<hr>
+		</div>
+
+		<div id="question"></div>
+		<div>
+			<label class="option"><input type="radio" name="option" value="1" onclick="nextques()" /><span
+					id="option1"></span></label>
+			<br>
+			<label class="option"><input type="radio" name="option" value="2" onclick="nextques()" /><span
+					id="option2"></span></label>
+			<br>
+			<label class="option"><input type="radio" name="option" value="3" onclick="nextques()" /><span
+					id="option3"></span></label>
+			<br>
+			<label class="option"><input type="radio" name="option" value="4" onclick="nextques()" /><span
+					id="option4"></span></label>
+			<br>
+			<br>
+			<div id="result" style="display:none"></div>
+			<br>
+			<hr>
+			<button id="quit" onclick="quit();">Quit</button>
+
+			
+		</div>
+	</div>
+
+	
+
+	<script type="text/javascript" src="questions.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+
+<script>
+	var secondsDown = 60;
+	var timeIntervalUp = setInterval(function () {
+		startTimer()
+	}, 1000);
+
+	function startTimer() {
+		document.getElementById("countDown").innerHTML = "Time Remaining: " + secondsDown;
+		secondsDown--;
+
+		if (secondsDown == 0) {
+			clearInterval(timeIntervalUp);
+			endTimer();
+			reload();
+		}
+	}
+
+	function endTimer() {
+		document.getElementById("countDown").innerHTML = "Time ran out";
+	}
+
+	function reload() {
+		//window.location.href = "result.html";
+		document.location.href = "result.html";
+	}
+</script>
+
+</html>
